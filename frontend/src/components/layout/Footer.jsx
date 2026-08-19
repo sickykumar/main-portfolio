@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { ArrowUp, Instagram, Mail, Heart } from 'lucide-react';
-import { Github, Linkedin, Whatsapp, Telegram } from '../ui/BrandIcons';
+import { Github, Linkedin, Facebook, Whatsapp, Telegram } from '../ui/BrandIcons';
 import { RevealOnScroll } from '../ui/Animations';
 
 export const Footer = () => {
@@ -46,12 +46,13 @@ export const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Github, href: 'https://github.com/Sicky9304', label: 'GitHub' },
+    { icon: Github, href: 'https://github.com/sickykumar', label: 'GitHub' },
     { icon: Linkedin, href: 'https://linkedin.com/in/sickykumar', label: 'LinkedIn' },
+    { icon: Facebook, href: 'https://facebook.com/sicky9304s', label: 'Facebook' },
     { icon: Instagram, href: 'https://instagram.com/sicky9304s', label: 'Instagram' },
     { icon: Whatsapp, href: 'https://wa.me/919304490856', label: 'WhatsApp' },
     { icon: Telegram, href: 'https://t.me/+919304490856', label: 'Telegram' },
-    { icon: Mail, href: 'mailto:sickykumar01@gmail.com', label: 'Email' },
+    { icon: Mail, href: 'mailto:contact@sickykumar.in', label: 'Email' },
   ];
 
   const scrollToSection = (e, href) => {

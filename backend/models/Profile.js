@@ -157,10 +157,12 @@ const profileSchema = new mongoose.Schema(
         },
       ],
       default: [
-        { platform: 'GitHub', url: 'https://github.com/Sicky9304', handle: '@Sicky9304' },
+        { platform: 'GitHub', url: 'https://github.com/sickykumar', handle: '@sickykumar' },
         { platform: 'LinkedIn', url: 'https://linkedin.com/in/sickykumar', handle: '/in/sickykumar' },
+        { platform: 'Facebook', url: 'https://facebook.com/sicky9304s', handle: '@sicky9304s' },
+        { platform: 'Instagram', url: 'https://instagram.com/sicky9304s', handle: '@sicky9304s' },
         { platform: 'LeetCode', url: 'https://leetcode.com/u/Sicky9304', handle: '@Sicky9304' },
-        { platform: 'Email', url: 'mailto:sickykumar01@gmail.com', handle: 'sickykumar01@gmail.com' },
+        { platform: 'Email', url: 'mailto:contact@sickykumar.in', handle: 'contact@sickykumar.in' },
       ],
     },
     resumeBase64: {

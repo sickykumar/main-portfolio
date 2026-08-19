@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { GitBranch, Star, GitFork, Activity } from 'lucide-react';
+import { Github } from '../../components/ui/BrandIcons';
 import { RevealOnScroll, SectionHeading } from '../../components/ui/Animations';
 import { useApi } from '../../hooks/useApi';
 import { fetchProfile } from '../../api/index.js';
@@ -126,14 +127,25 @@ export const GitHubSection = () => {
           {/* Featured Repositories */}
           <RevealOnScroll delay={0.15} className="h-full">
             <div className="glass rounded-[28px] p-8 h-full flex flex-col">
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-6" style={{ fontFamily: 'Satoshi, sans-serif' }}>
-                Featured Repositories
-              </h3>
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white" style={{ fontFamily: 'Satoshi, sans-serif' }}>
+                  Featured Repositories
+                </h3>
+                <a
+                  href="https://github.com/sickykumar"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary dark:text-primary-light hover:underline"
+                >
+                  <Github size={13} />
+                  @sickykumar
+                </a>
+              </div>
               <div className="space-y-3 flex-1 flex flex-col justify-center">
                 {featuredRepos.map((repo) => (
                   <motion.a
                     key={repo.name}
-                    href={`https://github.com/Sicky9304/${repo.name}`}
+                    href={`https://github.com/sickykumar/${repo.name}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ x: 4 }}
@@ -153,6 +165,16 @@ export const GitHubSection = () => {
                     </div>
                   </motion.a>
                 ))}
+              </div>
+              <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/60 text-right">
+                <a
+                  href="https://github.com/sickykumar"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-xs font-medium text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary-light transition-colors"
+                >
+                  View all repositories on GitHub →
+                </a>
               </div>
             </div>
           </RevealOnScroll>

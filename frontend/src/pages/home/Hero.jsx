@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { MapPin, Sparkles, ArrowDown, Instagram } from 'lucide-react';
-import { Github, Linkedin, Whatsapp, Telegram } from '../../components/ui/BrandIcons';
+import { Github, Linkedin, Facebook, Whatsapp, Telegram } from '../../components/ui/BrandIcons';
 import { useTheme } from '../../context/ThemeContext';
 import { MagneticButton } from '../../components/ui/MagneticButton';
 import { useApi } from '../../hooks/useApi';
@@ -19,6 +19,7 @@ const FALLBACK_ROLES = [
 const SOCIAL_ICON_MAP = {
   GitHub: Github,
   LinkedIn: Linkedin,
+  Facebook: Facebook,
   Instagram: Instagram,
   WhatsApp: Whatsapp,
   Telegram: Telegram,
@@ -38,12 +39,26 @@ export const Hero = () => {
   const available = profile?.available ?? true;
 
   let rawSocialLinks = profile?.socialLinks 
-    ? profile.socialLinks.filter(s => s.platform !== 'LeetCode')
+    ? profile.socialLinks.filter(s => s.platform !== 'LeetCode').map(s => {
+        if (s.platform === 'GitHub' && s.url.includes('Sicky9304')) {
+          return { ...s, url: 'https://github.com/sickykumar', handle: '@sickykumar' };
+        }
+        return s;
+      })
     : [
-        { platform: 'GitHub', url: 'https://github.com/Sicky9304', handle: '@Sicky9304' },
+        { platform: 'GitHub', url: 'https://github.com/sickykumar', handle: '@sickykumar' },
         { platform: 'LinkedIn', url: 'https://linkedin.com/in/sickykumar', handle: '/in/sickykumar' },
+        { platform: 'Facebook', url: 'https://facebook.com/sicky9304s', handle: '@sicky9304s' },
         { platform: 'Instagram', url: 'https://instagram.com/sicky9304s', handle: '@sicky9304s' },
       ];
+
+  // Ensure Facebook is appended if profile exists but doesn't have it yet
+  if (profile && !rawSocialLinks.some(s => s.platform === 'Facebook')) {
+    rawSocialLinks = [
+      ...rawSocialLinks,
+      { platform: 'Facebook', url: 'https://facebook.com/sicky9304s', handle: '@sicky9304s' }
+    ];
+  }
 
   // Ensure Instagram is appended if profile exists but doesn't have it yet
   if (profile && !rawSocialLinks.some(s => s.platform === 'Instagram')) {

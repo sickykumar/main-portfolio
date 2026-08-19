@@ -2,28 +2,35 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   Send, Mail, MapPin, Copy, CheckCheck,
-  Globe, Github, Linkedin, Instagram, Facebook,
+  Globe, Instagram,
   MessageCircle, ExternalLink, Phone,
 } from 'lucide-react';
 import { RevealOnScroll, SectionHeading } from '../../components/ui/Animations';
 import { MagneticButton } from '../../components/ui/MagneticButton';
 import { submitContact } from '../../api/index.js';
-import { Whatsapp, Telegram } from '../../components/ui/BrandIcons';
+import { Github, Linkedin, Facebook, Whatsapp, Telegram } from '../../components/ui/BrandIcons';
 
 const SOCIALS = [
   {
     name: 'GitHub',
-    handle: '@Sicky9304',
+    handle: '@sickykumar',
     icon: Github,
     gradient: 'from-slate-600 to-slate-900',
-    url: 'https://github.com/Sicky9304',
+    url: 'https://github.com/sickykumar',
   },
   {
     name: 'LinkedIn',
     handle: '/in/sickykumar',
     icon: Linkedin,
     gradient: 'from-sky-500 to-blue-700',
-    url: 'https://www.linkedin.com/in/sicky-kumar-059a3b256/',
+    url: 'https://www.linkedin.com/in/sickykumar',
+  },
+  {
+    name: 'Facebook',
+    handle: '@sicky9304s',
+    icon: Facebook,
+    gradient: 'from-blue-600 to-indigo-700',
+    url: 'https://facebook.com/sicky9304s',
   },
   {
     name: 'Instagram',
