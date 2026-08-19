@@ -48,7 +48,7 @@ const profileSchema = new mongoose.Schema(
         { icon: 'FolderGit2', value: '30+', label: 'Projects Built' },
         { icon: 'Code2', value: '100+', label: 'GitHub Contributions' },
         { icon: 'Target', value: '10+', label: 'Technologies' },
-        { icon: 'Award', value: '8.69', label: 'CGPA' },
+        { icon: 'Award', value: '8.40', label: 'CGPA' },
       ],
     },
 
@@ -67,7 +67,7 @@ const profileSchema = new mongoose.Schema(
           period: '2024 – 2027',
           degree: 'B.Tech in Computer Science & Engineering',
           school: 'MCKV Institute of Engineering, West Bengal',
-          grade: 'CGPA: 8.69 / 10 (till 5th Sem)',
+          grade: 'CGPA: 8.40 / 10 (till 6th Sem)',
           current: true,
         },
         {

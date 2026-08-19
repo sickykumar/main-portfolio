@@ -13,9 +13,9 @@ export const educationData = {
       board: "Maulana Abul Kalam Azad University of Technology (MAKAUT)",
       subtitle: "B.Tech in Computer Science & Engineering (Lateral Entry)",
       summary: [
-        { label: "Current CGPA", value: "8.69/10" },
+        { label: "Current CGPA", value: "8.40/10" },
         { label: "Duration", value: "2024 – Present" },
-        { label: "Current Semester", value: "7" },
+        { label: "Current Semester", value: "7th Sem" },
         { label: "Entry Mode", value: "Lateral Entry" },
         { label: "Status", value: "Pursuing", isBadge: true }
       ],
@@ -34,13 +34,13 @@ export const educationData = {
             registration: "24300101XXXX",
             year: "2024",
             records: [
-              { subject: "Data Structure & Algorithms", marks: 85, maxMarks: 100 },
-              { subject: "Analog & Digital Electronics", marks: 82, maxMarks: 100 },
-              { subject: "Computer Organisation", marks: 84, maxMarks: 100 },
-              { subject: "Mathematics-III (CST)", marks: 88, maxMarks: 100 },
-              { subject: "Economics for Engineers", marks: 80, maxMarks: 100 }
+              { subject: "Data Structure & Algorithms", marks: 82, maxMarks: 100 },
+              { subject: "Analog & Digital Electronics", marks: 80, maxMarks: 100 },
+              { subject: "Computer Organisation", marks: 81, maxMarks: 100 },
+              { subject: "Mathematics-III (CST)", marks: 84, maxMarks: 100 },
+              { subject: "Economics for Engineers", marks: 78, maxMarks: 100 }
             ],
-            summaryText: "SGPA: 8.58 / 10 | Result: Passed"
+            summaryText: "SGPA: 8.10 / 10 | YGPA: 8.20 | Result: Passed"
           }
         },
         {
@@ -57,13 +57,13 @@ export const educationData = {
             registration: "24300101XXXX",
             year: "2025",
             records: [
-              { subject: "Discrete Mathematics", marks: 86, maxMarks: 100 },
-              { subject: "Computer Architecture", marks: 88, maxMarks: 100 },
-              { subject: "Formal Language & Automata Theory", marks: 82, maxMarks: 100 },
-              { subject: "Design & Analysis of Algorithms", marks: 90, maxMarks: 100 },
-              { subject: "Biology for Engineers", marks: 78, maxMarks: 100 }
+              { subject: "Discrete Mathematics", marks: 83, maxMarks: 100 },
+              { subject: "Computer Architecture", marks: 85, maxMarks: 100 },
+              { subject: "Formal Language & Automata Theory", marks: 80, maxMarks: 100 },
+              { subject: "Design & Analysis of Algorithms", marks: 86, maxMarks: 100 },
+              { subject: "Biology for Engineers", marks: 82, maxMarks: 100 }
             ],
-            summaryText: "SGPA: 8.65 / 10 | Result: Passed"
+            summaryText: "SGPA: 8.31 / 10 | YGPA: 8.20 | Result: Passed"
           }
         },
         {
@@ -80,13 +80,13 @@ export const educationData = {
             registration: "24300101XXXX",
             year: "2025",
             records: [
-              { subject: "Software Engineering", marks: 90, maxMarks: 100 },
+              { subject: "Software Engineering", marks: 88, maxMarks: 100 },
               { subject: "Compiler Design", marks: 85, maxMarks: 100 },
-              { subject: "Operating Systems", marks: 89, maxMarks: 100 },
-              { subject: "Object Oriented Programming (Java)", marks: 92, maxMarks: 100 },
-              { subject: "Constitution of India", marks: 82, maxMarks: 100 }
+              { subject: "Operating Systems", marks: 87, maxMarks: 100 },
+              { subject: "Object Oriented Programming (Java)", marks: 90, maxMarks: 100 },
+              { subject: "Constitution of India", marks: 84, maxMarks: 100 }
             ],
-            summaryText: "SGPA: 8.84 / 10 | Result: Passed"
+            summaryText: "SGPA: 8.69 / 10 | YGPA: 8.60 | Result: Passed"
           }
         },
         {
@@ -94,7 +94,23 @@ export const educationData = {
           title: "Semester 6 Marksheet",
           category: "Semester Transcript",
           year: "2026",
-          status: "Coming Soon"
+          status: "Available",
+          docDetails: {
+            title: "B.Tech Semester 6 Marksheet",
+            institution: "MCKV Institute of Engineering",
+            authority: "MAKAUT",
+            roll: "30000124XXX",
+            registration: "24300101XXXX",
+            year: "2026",
+            records: [
+              { subject: "Database Management Systems", marks: 86, maxMarks: 100 },
+              { subject: "Computer Networks", marks: 84, maxMarks: 100 },
+              { subject: "Advanced Algorithms", marks: 88, maxMarks: 100 },
+              { subject: "Artificial Intelligence & ML", marks: 85, maxMarks: 100 },
+              { subject: "Values & Ethics in Profession", marks: 83, maxMarks: 100 }
+            ],
+            summaryText: "SGPA: 8.52 / 10 | YGPA: 8.60 | Result: Passed"
+          }
         },
         {
           id: "btech_sem_7",

@@ -28,7 +28,7 @@ export const aboutData = {
         level: "B.Tech CSE (Lateral Entry)",
         period: "2024 – Present",
         institution: "MCKV Institute of Engineering, West Bengal",
-        performance: "Current CGPA: 8.69 / 10",
+        performance: "Current CGPA: 8.40 / 10",
         status: "Pursuing",
         color: "from-accent/10 to-pink/10"
       },

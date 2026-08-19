@@ -162,7 +162,7 @@ export const AboutPage = () => {
   const infoChips = [
     { text: "💻 MERN Developer", xOffset: -120, yOffset: -80 },
     { text: "🤖 AI Integrator", xOffset: 120, yOffset: -50 },
-    { text: "📈 8.69 CGPA", xOffset: -100, yOffset: 90 },
+    { text: "📈 8.40 CGPA", xOffset: -100, yOffset: 90 },
     { text: "🇮🇳 West Bengal", xOffset: 100, yOffset: 80 }
   ];
 
