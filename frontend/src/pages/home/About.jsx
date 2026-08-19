@@ -28,7 +28,7 @@ const FALLBACK_EDUCATION = [
     period: '2020 – 2023',
     degree: 'Diploma in Computer Science & Technology',
     school: 'Technique Polytechnic Institute, West Bengal',
-    grade: 'CGPA: 9.0 / 10',
+    grade: 'CGPA: 9.00 / 10 (83.4%) • 1st Class Distinction',
     current: false,
   },
   {

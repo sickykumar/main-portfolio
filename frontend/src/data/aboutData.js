@@ -37,7 +37,7 @@ export const aboutData = {
         level: "Diploma in CST",
         period: "2020 – 2023",
         institution: "Technique Polytechnic Institute, West Bengal",
-        performance: "CGPA: 9.00 / 10",
+        performance: "CGPA: 9.00 / 10 (83.4%) • 1st Class Distinction",
         status: "Completed",
         color: "from-secondary/10 to-accent/10"
       },

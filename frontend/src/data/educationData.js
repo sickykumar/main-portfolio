@@ -156,184 +156,34 @@ export const educationData = {
       board: "West Bengal State Council of Technical and Vocational Education and Skill Development (WBSCTVESD)",
       summary: [
         { label: "Final CGPA", value: "9.00/10" },
+        { label: "Overall Percentage", value: "83.4%" },
         { label: "Duration", value: "2020 – 2023" },
         { label: "Total Semesters", value: "6 Semesters" },
         { label: "Class", value: "1st Class Distinction", isBadge: true }
       ],
       documents: [
         {
-          id: "diploma_sem_1",
-          title: "Semester 1 Marksheet",
-          category: "Semester Transcript",
-          year: "2021",
-          status: "Available",
-          docDetails: {
-            title: "Diploma Semester 1 Marksheet",
-            institution: "Technique Polytechnic Institute",
-            authority: "WBSCTVESD",
-            roll: "D-CST-10020XXX",
-            registration: "D202120XXX",
-            year: "2021",
-            records: [
-              { subject: "Mathematics-I", marks: "AA (Outstanding)", maxMarks: "Marks: 100" },
-              { subject: "Applied Chemistry", marks: "AA (Outstanding)", maxMarks: "Marks: 100" },
-              { subject: "Applied Physics-I", marks: "AB (Excellent)", maxMarks: "Marks: 100" },
-              { subject: "Communication Skills in English", marks: "BB (Very Good)", maxMarks: "Marks: 100" },
-              { subject: "Engineering Graphics Lab", marks: "AB (Excellent)", maxMarks: "Marks: 100" },
-              { subject: "Applied Chemistry Lab", marks: "AA (Outstanding)", maxMarks: "Marks: 100" },
-              { subject: "Applied Physics-I Lab", marks: "AA (Outstanding)", maxMarks: "Marks: 100" },
-              { subject: "Engineering Workshop Practice", marks: "AB (Excellent)", maxMarks: "Marks: 100" },
-              { subject: "Communication Skills Lab", marks: "AA (Outstanding)", maxMarks: "Marks: 100" },
-              { subject: "Sports and Yoga", marks: "AA (Outstanding)", maxMarks: "Marks: 100" }
-            ],
-            summaryText: "GPA: 9.30 / 10 | Percentage: 87.6% | Result: Passed"
-          }
-        },
-        {
-          id: "diploma_sem_2",
-          title: "Semester 2 Marksheet",
-          category: "Semester Transcript",
-          year: "2021",
-          status: "Available",
-          docDetails: {
-            title: "Diploma Semester 2 Marksheet",
-            institution: "Technique Polytechnic Institute",
-            authority: "WBSCTVESD",
-            roll: "D-CST-10020XXX",
-            registration: "D202120XXX",
-            year: "2021",
-            records: [
-              { subject: "Engineering Mathematics-II", marks: "AA (Outstanding)", maxMarks: "Marks: 100" },
-              { subject: "Engineering Mechanics", marks: "AA (Outstanding)", maxMarks: "Marks: 100" },
-              { subject: "Applied Physics-II", marks: "AB (Excellent)", maxMarks: "Marks: 100" },
-              { subject: "Introduction to IT Systems", marks: "AA (Outstanding)", maxMarks: "Marks: 100" },
-              { subject: "Fundamentals of Electrical & Electronics", marks: "AB (Excellent)", maxMarks: "Marks: 100" },
-              { subject: "IT Systems Lab", marks: "AA (Outstanding)", maxMarks: "Marks: 100" },
-              { subject: "Applied Physics-II Lab", marks: "AA (Outstanding)", maxMarks: "Marks: 100" },
-              { subject: "Electrical & Electronics Lab", marks: "AA (Outstanding)", maxMarks: "Marks: 100" },
-              { subject: "Engineering Mechanics Lab", marks: "AA (Outstanding)", maxMarks: "Marks: 100" },
-              { subject: "Environmental Science", marks: "AB (Excellent)", maxMarks: "Marks: 100" }
-            ],
-            summaryText: "GPA: 9.00 / 10 | Result: Passed"
-          }
-        },
-        {
-          id: "diploma_sem_3",
-          title: "Semester 3 Marksheet",
-          category: "Semester Transcript",
-          year: "2022",
-          status: "Available",
-          docDetails: {
-            title: "Diploma Semester 3 Marksheet",
-            institution: "Technique Polytechnic Institute",
-            authority: "WBSCTVESD",
-            roll: "D-CST-10020XXX",
-            registration: "D202120XXX",
-            year: "2022",
-            records: [
-              { subject: "Computer Programming (C)", marks: "AA (Outstanding)", maxMarks: "Marks: 100" },
-              { subject: "Scripting Languages (Python)", marks: "AA (Outstanding)", maxMarks: "Marks: 100" },
-              { subject: "Data Structures & Algorithms", marks: "AB (Excellent)", maxMarks: "Marks: 100" },
-              { subject: "Computer System Architecture", marks: "BB (Very Good)", maxMarks: "Marks: 100" },
-              { subject: "Programming in C Lab", marks: "AA (Outstanding)", maxMarks: "Marks: 100" },
-              { subject: "Python Scripting Lab", marks: "AA (Outstanding)", maxMarks: "Marks: 100" },
-              { subject: "Algorithms Lab", marks: "AA (Outstanding)", maxMarks: "Marks: 100" }
-            ],
-            summaryText: "GPA: 8.60 / 10 | Percentage: 81.4% | Result: Passed"
-          }
-        },
-        {
-          id: "diploma_sem_4",
-          title: "Semester 4 Marksheet",
-          category: "Semester Transcript",
-          year: "2022",
-          status: "Available",
-          docDetails: {
-            title: "Diploma Semester 4 Marksheet",
-            institution: "Technique Polytechnic Institute",
-            authority: "WBSCTVESD",
-            roll: "D-CST-10020XXX",
-            registration: "D202120XXX",
-            year: "2022",
-            records: [
-              { subject: "Operating Systems", marks: "BB (Very Good)", maxMarks: "Marks: 100" },
-              { subject: "Introduction to DBMS", marks: "BB (Very Good)", maxMarks: "Marks: 100" },
-              { subject: "Computer Networks", marks: "BB (Very Good)", maxMarks: "Marks: 100" },
-              { subject: "Software Engineering (SSAD)", marks: "BB (Very Good)", maxMarks: "Marks: 100" },
-              { subject: "OOP using Java", marks: "BB (Very Good)", maxMarks: "Marks: 100" },
-              { subject: "Minor Project", marks: "AA (Outstanding)", maxMarks: "Marks: 100" },
-              { subject: "Operating Systems Lab", marks: "AA (Outstanding)", maxMarks: "Marks: 100" },
-              { subject: "DBMS Lab", marks: "AA (Outstanding)", maxMarks: "Marks: 100" },
-              { subject: "Computer Networks Lab", marks: "AA (Outstanding)", maxMarks: "Marks: 100" },
-              { subject: "Java Programming Lab", marks: "AA (Outstanding)", maxMarks: "Marks: 100" }
-            ],
-            summaryText: "GPA: 8.60 / 10 | Percentage: 82.0% | Result: Passed"
-          }
-        },
-        {
-          id: "diploma_sem_5",
-          title: "Semester 5 Marksheet",
-          category: "Semester Transcript",
-          year: "2022",
-          status: "Available",
-          docDetails: {
-            title: "Diploma Semester 5 Marksheet",
-            institution: "Technique Polytechnic Institute",
-            authority: "WBSCTVESD",
-            roll: "D-CST-10020XXX",
-            registration: "D202120XXX",
-            year: "2022",
-            records: [
-              { subject: "Java & Advanced Web Tech", marks: "AA (Outstanding)", maxMarks: "Marks: 100" },
-              { subject: "Internet of Things (IoT)", marks: "AA (Outstanding)", maxMarks: "Marks: 100" },
-              { subject: "Microprocessor & Microcontroller", marks: "BB (Very Good)", maxMarks: "Marks: 100" },
-              { subject: "Advanced Java Lab", marks: "AA (Outstanding)", maxMarks: "Marks: 100" },
-              { subject: "IoT Applications Lab", marks: "AA (Outstanding)", maxMarks: "Marks: 100" },
-              { subject: "Industrial Training & Seminar", marks: "AA (Outstanding)", maxMarks: "Marks: 100" }
-            ],
-            summaryText: "GPA: 9.80 / 10 | Percentage: 91.5% | Result: Passed"
-          }
-        },
-        {
-          id: "diploma_sem_6",
-          title: "Semester 6 Marksheet",
-          category: "Semester Transcript",
-          year: "2023",
-          status: "Available",
-          docDetails: {
-            title: "Diploma Semester 6 Marksheet",
-            institution: "Technique Polytechnic Institute",
-            authority: "WBSCTVESD",
-            roll: "D-CST-10020XXX",
-            registration: "D202120XXX",
-            year: "2023",
-            records: [
-              { subject: "Data Warehousing & Data Mining", marks: "BB (Very Good)", maxMarks: "Marks: 100" },
-              { subject: "Entrepreneurship & Start-ups", marks: "BB (Very Good)", maxMarks: "Marks: 100" },
-              { subject: "Machine Learning", marks: "AB (Excellent)", maxMarks: "Marks: 100" },
-              { subject: "Engineering Economics & Project Mgmt", marks: "AB (Excellent)", maxMarks: "Marks: 100" },
-              { subject: "Major Project & Implementation", marks: "AA (Outstanding)", maxMarks: "Marks: 100" },
-              { subject: "Seminar & Grand Viva", marks: "AA (Outstanding)", maxMarks: "Marks: 100" }
-            ],
-            summaryText: "GPA: 9.00 / 10 | Overall 1st Class Distinction | Result: Passed"
-          }
-        },
-        {
-          id: "diploma_certificate",
-          title: "Final Diploma Certificate",
-          category: "Certificate",
-          year: "2023",
+          id: "diploma_consolidated",
+          title: "All Semesters Marksheet & Certificate",
+          category: "Consolidated Record",
+          year: "2020 – 2023",
           status: "Available",
           docDetails: {
             title: "Diploma in Computer Science & Technology",
-            institution: "Technique Polytechnic Institute",
-            authority: "WBSCTVESD",
+            institution: "Technique Polytechnic Institute, West Bengal",
+            authority: "WBSCTVESD (West Bengal State Council)",
             roll: "D-CST-10020XXX",
             registration: "D202120XXX",
-            year: "2023",
-            isCertificate: true,
-            awardText: "This is to certify that SICKY KUMAR, having successfully completed the prescribed course of studies and passed the final examinations, is hereby awarded the Diploma in Computer Science & Technology with 1st Class Distinction (Serial No: 18802/22-23).",
-            summaryText: "Final Cumulative CGPA: 9.00 / 10 | 1st Class Distinction"
+            year: "2020 – 2023",
+            records: [
+              { subject: "Semester 1 (June 2021)", marks: "GPA: 9.30", maxMarks: "Scale: 10.0" },
+              { subject: "Semester 2 (Dec 2021)", marks: "GPA: 9.80", maxMarks: "Scale: 10.0" },
+              { subject: "Semester 3 (June 2022)", marks: "GPA: 9.20", maxMarks: "Scale: 10.0" },
+              { subject: "Semester 4 (Nov 2022)", marks: "GPA: 8.60", maxMarks: "Scale: 10.0" },
+              { subject: "Semester 5 (Dec 2022)", marks: "GPA: 8.20", maxMarks: "Scale: 10.0" },
+              { subject: "Semester 6 (July 2023)", marks: "GPA: 8.70", maxMarks: "Scale: 10.0" }
+            ],
+            summaryText: "Final CGPA: 9.00 / 10 | Overall: 83.4% (1st Class Distinction)"
           }
         }
       ]
