@@ -60,15 +60,27 @@ const profileSchema = new mongoose.Schema(
           school: String,
           grade: String,
           current: { type: Boolean, default: false },
+          semesters: [
+            {
+              sem: String,
+              sgpa: String,
+            },
+          ],
         },
       ],
       default: [
         {
-          period: '2024 – 2027',
+          period: '2024 – Present (7th Sem)',
           degree: 'B.Tech in Computer Science & Engineering',
           school: 'MCKV Institute of Engineering, West Bengal',
-          grade: 'CGPA: 8.40 / 10 (till 6th Sem)',
+          grade: 'CGPA: 8.40 / 10 (Till 6th Sem)',
           current: true,
+          semesters: [
+            { sem: 'Sem 3', sgpa: '8.10' },
+            { sem: 'Sem 4', sgpa: '8.31' },
+            { sem: 'Sem 5', sgpa: '8.69' },
+            { sem: 'Sem 6', sgpa: '8.52' },
+          ],
         },
         {
           period: '2020 – 2023',
@@ -76,6 +88,14 @@ const profileSchema = new mongoose.Schema(
           school: 'Technique Polytechnic Institute, West Bengal',
           grade: 'CGPA: 9.00 / 10 (83.4%) • 1st Class Distinction',
           current: false,
+          semesters: [
+            { sem: 'Sem 1', sgpa: '9.3' },
+            { sem: 'Sem 2', sgpa: '9.8' },
+            { sem: 'Sem 3', sgpa: '9.2' },
+            { sem: 'Sem 4', sgpa: '8.6' },
+            { sem: 'Sem 5', sgpa: '8.2' },
+            { sem: 'Sem 6', sgpa: '8.7' },
+          ],
         },
         {
           period: '2018 – 2019',

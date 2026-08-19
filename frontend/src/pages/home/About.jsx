@@ -18,10 +18,16 @@ const FALLBACK_STATS = [
 
 const FALLBACK_EDUCATION = [
   {
-    period: '2024 – 2027',
+    period: '2024 – Present (7th Sem)',
     degree: 'B.Tech in Computer Science & Engineering',
     school: 'MCKV Institute of Engineering, West Bengal',
-    grade: 'CGPA: 8.40 / 10 (till 6th Sem)',
+    grade: 'CGPA: 8.40 / 10 (Till 6th Sem)',
+    semesters: [
+      { sem: 'Sem 3', sgpa: '8.10' },
+      { sem: 'Sem 4', sgpa: '8.31' },
+      { sem: 'Sem 5', sgpa: '8.69' },
+      { sem: 'Sem 6', sgpa: '8.52' },
+    ],
     current: true,
   },
   {
@@ -29,6 +35,14 @@ const FALLBACK_EDUCATION = [
     degree: 'Diploma in Computer Science & Technology',
     school: 'Technique Polytechnic Institute, West Bengal',
     grade: 'CGPA: 9.00 / 10 (83.4%) • 1st Class Distinction',
+    semesters: [
+      { sem: 'Sem 1', sgpa: '9.3' },
+      { sem: 'Sem 2', sgpa: '9.8' },
+      { sem: 'Sem 3', sgpa: '9.2' },
+      { sem: 'Sem 4', sgpa: '8.6' },
+      { sem: 'Sem 5', sgpa: '8.2' },
+      { sem: 'Sem 6', sgpa: '8.7' },
+    ],
     current: false,
   },
   {
@@ -154,7 +168,21 @@ export const About = () => {
                     </span>
                     <h4 className="text-base font-bold text-slate-800 dark:text-slate-200 mt-1">{edu.degree}</h4>
                     <p className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">{edu.school}</p>
-                    <p className="text-sm font-semibold text-slate-600 dark:text-slate-300 mt-1">{edu.grade}</p>
+                    <p className="text-sm font-semibold text-slate-700 dark:text-slate-300 mt-1">{edu.grade}</p>
+
+                    {edu.semesters && (
+                      <div className="flex flex-wrap gap-1.5 mt-2.5">
+                        {edu.semesters.map((s, sIdx) => (
+                          <span
+                            key={sIdx}
+                            className="inline-flex items-center gap-1 text-[11px] font-mono font-medium px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700/60 transition-all hover:border-primary/40 hover:scale-105"
+                          >
+                            <span className="text-slate-400 dark:text-slate-500 text-[10px] font-sans font-normal">{s.sem}:</span>
+                            <span className="font-bold text-primary dark:text-primary-light">{s.sgpa}</span>
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
