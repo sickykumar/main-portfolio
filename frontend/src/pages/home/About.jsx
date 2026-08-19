@@ -168,11 +168,13 @@ export const About = () => {
                     </span>
                     <h4 className="text-base font-bold text-slate-800 dark:text-slate-200 mt-1">{edu.degree}</h4>
                     <p className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">{edu.school}</p>
-                    <p className="text-sm font-semibold text-slate-700 dark:text-slate-300 mt-1">{edu.grade}</p>
+                    <p className="text-sm font-semibold text-slate-700 dark:text-slate-300 mt-1">
+                      {edu.grade || FALLBACK_EDUCATION[i]?.grade}
+                    </p>
 
-                    {edu.semesters && (
+                    {(edu.semesters || FALLBACK_EDUCATION[i]?.semesters) && (
                       <div className="flex flex-wrap gap-1.5 mt-2.5">
-                        {edu.semesters.map((s, sIdx) => (
+                        {(edu.semesters || FALLBACK_EDUCATION[i]?.semesters).map((s, sIdx) => (
                           <span
                             key={sIdx}
                             className="inline-flex items-center gap-1 text-[11px] font-mono font-medium px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700/60 transition-all hover:border-primary/40 hover:scale-105"
