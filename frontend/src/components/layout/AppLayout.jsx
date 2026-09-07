@@ -1,10 +1,11 @@
-import { useState, useEffect, Suspense, lazy } from 'react';
+import { useState, useEffect, useRef, Suspense, lazy } from 'react';
 import { Outlet, useLocation, useNavigation } from 'react-router-dom';
 import { CursorGlow } from '../ui/CursorGlow';
 import { ScrollProgress } from '../ui/ScrollProgress';
 import { LoadingScreen } from './LoadingScreen';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
+import { checkHealth } from '../../api/index.js';
 
 // Lazy load large interactive widgets to shrink the initial page boot bundle size
 const ThemeCustomizer = lazy(() => import('../ui/ThemeCustomizer').then(m => ({ default: m.ThemeCustomizer })));
@@ -14,16 +15,36 @@ const GlobalAIAssistant = lazy(() => import('../ai/GlobalAIAssistant').then(m =>
 export const AppLayout = () => {
   const location = useLocation();
   const navigation = useNavigation();
-  const [isLoading, setIsLoading] = useState(true);
   const [isGlobalLoading, setIsGlobalLoading] = useState(false);
+  const lastPingRef = useRef(Date.now());
 
-  // Initial loader overlay timer
+  // Anti-cold-storage client heartbeat & initial backend warmup
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 800);
-    return () => clearTimeout(timer);
+    // 1. Immediate warmup ping on boot
+    checkHealth().then(() => {
+      lastPingRef.current = Date.now();
+    });
+
+    // 2. Periodic background heartbeat every 5 minutes while user has page open
+    const HEARTBEAT_INTERVAL = 5 * 60 * 1000;
+    const interval = setInterval(() => {
+      checkHealth().then(() => {
+        lastPingRef.current = Date.now();
+      });
+    }, HEARTBEAT_INTERVAL);
+
+    return () => clearInterval(interval);
   }, []);
+
+  // Navigation warmup check: If > 4 minutes elapsed since last ping, refresh connection
+  useEffect(() => {
+    const now = Date.now();
+    if (now - lastPingRef.current > 4 * 60 * 1000) {
+      checkHealth().then(() => {
+        lastPingRef.current = Date.now();
+      });
+    }
+  }, [location.pathname]);
 
   // Listen to custom global loading events (e.g. from API fetches)
   useEffect(() => {
@@ -56,7 +77,7 @@ export const AppLayout = () => {
   if (isAdminRoute) {
     return (
       <div className="min-h-screen bg-slate-950 text-white relative">
-        <LoadingScreen isLoading={isLoading || isPageTransitioning || isGlobalLoading} />
+        <LoadingScreen isLoading={isPageTransitioning || isGlobalLoading} />
         <main className="w-full h-full">
           <Outlet />
         </main>
@@ -77,7 +98,7 @@ export const AppLayout = () => {
         <ThemeCustomizer />
         <CommandPalette />
       </Suspense>
-      <LoadingScreen isLoading={isLoading || isPageTransitioning || isGlobalLoading} />
+      <LoadingScreen isLoading={isPageTransitioning || isGlobalLoading} />
 
       <Navbar />
 

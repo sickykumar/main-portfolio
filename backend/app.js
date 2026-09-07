@@ -21,7 +21,46 @@ import authInstagramRoutes from './routes/authInstagram.js';
 import Blog from './blog/Blog.js';
 import Project from './models/Project.js';
 
+import mongoose from 'mongoose';
+
 const app=express();
+
+function formatUptime(seconds) {
+  const d = Math.floor(seconds / (3600 * 24));
+  const h = Math.floor((seconds % (3600 * 24)) / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const s = Math.floor(seconds % 60);
+  const parts = [];
+  if (d > 0) parts.push(`${d}d`);
+  if (h > 0) parts.push(`${h}h`);
+  if (m > 0) parts.push(`${m}m`);
+  parts.push(`${s}s`);
+  return parts.join(' ');
+}
+
+const getHealthStatus = () => {
+  const uptimeSeconds = Math.floor(process.uptime());
+  const stateMap = { 0: 'disconnected', 1: 'connected', 2: 'connecting', 3: 'disconnecting' };
+  const readyState = mongoose.connection.readyState;
+  const mem = process.memoryUsage();
+
+  return {
+    status: 'ok',
+    timestamp: new Date().toISOString(),
+    uptime: formatUptime(uptimeSeconds),
+    uptimeSeconds,
+    database: {
+      status: stateMap[readyState] || 'unknown',
+      readyState
+    },
+    memory: {
+      rssMB: Math.round(mem.rss / 1024 / 1024),
+      heapUsedMB: Math.round(mem.heapUsed / 1024 / 1024)
+    },
+    environment: process.env.NODE_ENV || 'production',
+    service: 'portfolio-backend'
+  };
+};
 
 app.set('trust proxy',1);
 
@@ -49,6 +88,14 @@ app.use(cors({
 
 app.use(express.json({limit:'10mb'}));
 
+// ==========================================
+// UNTHROTTLED HEALTH & UPTIME CHECKS
+// (Placed BEFORE apiLimiter so keep-alive and monitors never hit 429)
+// ==========================================
+app.get('/', (_, res) => res.json({ success: true, message: 'Server running', ...getHealthStatus() }));
+app.get('/health', (_, res) => res.json(getHealthStatus()));
+app.get('/api/health', (_, res) => res.json(getHealthStatus()));
+
 const apiLimiter=rateLimit({
  windowMs:15*60*1000,
  max:process.env.NODE_ENV==='development' ? 10000 : 100,
@@ -62,9 +109,6 @@ const contactLimiter=rateLimit({
 });
 
 app.use('/api',apiLimiter);
-
-app.get('/',(_,res)=>res.json({success:true,message:'Server running'}));
-app.get('/api/health',(_,res)=>res.json({success:true}));
 
 app.get('/sitemap.xml', async (req, res) => {
   try {

@@ -187,7 +187,7 @@ const FALLBACK_PROJECTS = [
 
 export const ProjectsPage = () => {
   const navigate = useNavigate();
-  const { data: projectsData, error } = useApi(fetchProjects, FALLBACK_PROJECTS);
+  const { data: projectsData, error } = useApi(() => fetchProjects(true), FALLBACK_PROJECTS);
   
   let projects = Array.isArray(projectsData) && projectsData.length > 0 ? [...projectsData] : [...FALLBACK_PROJECTS];
   if (Array.isArray(projectsData) && projectsData.length > 0) {

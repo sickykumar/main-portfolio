@@ -146,9 +146,9 @@ export const TechStack = () => {
                 className={`glass rounded-2xl p-6 border border-transparent ${activeCat.borderColor} transition-all duration-300 group cursor-default`}
               >
                 <div className="flex items-center justify-between mb-4">
-                  <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">
+                  <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">
                     {skill.name}
-                  </h4>
+                  </h3>
                   <span className="text-xs font-bold text-primary dark:text-primary-light opacity-0 group-hover:opacity-100 transition-opacity">
                     {skill.level}%
                   </span>

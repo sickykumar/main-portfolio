@@ -38,8 +38,9 @@ export const SmoothScrollProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    // Bypass Lenis smooth scrolling on admin dashboard routes to keep native scrolling active in edit containers
-    if (window.location.pathname.startsWith('/sicky-admin')) {
+    // Bypass Lenis on mobile/touch devices to use native 120Hz/60Hz momentum scrolling and free main-thread CPU
+    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 768;
+    if (isTouchDevice || window.location.pathname.startsWith('/sicky-admin')) {
       return;
     }
 

@@ -22,7 +22,7 @@ async function parse(res){
   try{return await res.json();}catch{return {};}
 }
 
-async function request(endpoint, options={}){
+async function request(endpoint, options={}, retryCount = 1){
   const controller = new AbortController();
   const timer = setTimeout(()=>controller.abort(), DEFAULT_TIMEOUT);
 
@@ -30,6 +30,7 @@ async function request(endpoint, options={}){
     const response = await fetch(`${API_BASE}${endpoint}`,{
       method:"GET",
       signal:controller.signal,
+      cache: options.method && options.method !== 'GET' ? 'default' : 'no-cache',
       ...options,
       headers:{
         ...(options.body instanceof FormData ? {} : {"Content-Type":"application/json"}),
@@ -41,12 +42,23 @@ async function request(endpoint, options={}){
     const data = await parse(response);
 
     if(!response.ok){
+      // If server is spinning up from cold sleep (502/503/504), wait and auto-retry once
+      if (retryCount > 0 && [502, 503, 504].includes(response.status)) {
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        return request(endpoint, options, retryCount - 1);
+      }
       throw new ApiError(data.message || "Request failed", response.status, data.details);
     }
 
     return data;
   }catch(err){
     clearTimeout(timer);
+
+    // Auto-retry once on transient network drop / cold boot timeout
+    if (retryCount > 0 && (err.name === "AbortError" || err.message?.includes("Failed to fetch") || err.message?.includes("NetworkError"))) {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      return request(endpoint, options, retryCount - 1);
+    }
 
     if(err.name==="AbortError"){
       throw new ApiError("Request timeout",408);
@@ -58,7 +70,20 @@ async function request(endpoint, options={}){
   }
 }
 
-export const fetchProjects=()=>request("/projects?featured=true").then(r=>r.data);
+/**
+ * Health check ping to keep the backend warm and prevent cold starts.
+ * Queries unthrottled /health endpoint.
+ */
+export const checkHealth = async () => {
+  try {
+    return await request("/health");
+  } catch (err) {
+    console.warn("[HealthCheck] Keep-alive ping:", err.message);
+    return null;
+  }
+};
+
+export const fetchProjects=(all=false)=>request(all ? "/projects" : "/projects?featured=true").then(r=>r.data);
 export const fetchProject=(slug)=>request(`/projects/${slug}`).then(r=>r.data);
 export const fetchProfile=()=>request("/profile").then(r=>r.data);
 export const fetchTechStack=()=>request("/techstack").then(r=>r.data ?? []);
@@ -181,5 +206,6 @@ export default {
   askAi,
   translateText,
   generateBlogContent,
-  fetchArchitecture
+  fetchArchitecture,
+  checkHealth
 };

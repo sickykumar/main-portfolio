@@ -85,10 +85,14 @@
   }
   </script>
 
-  <!-- Analytics & Tracking (Deferred to improve PageSpeed score) -->
+  <!-- Analytics & Tracking (Deferred to user interaction or idle to optimize Core Web Vitals) -->
   <script>
-    window.addEventListener('load', function () {
-      (window.requestIdleCallback || function (cb) { setTimeout(cb, 2000); })(function () {
+    (function () {
+      let loaded = false;
+      function initAnalytics() {
+        if (loaded) return;
+        loaded = true;
+
         // Google Analytics 4 (GA4)
         const gaId = "%VITE_GA_MEASUREMENT_ID%";
         if (gaId && gaId !== "%" + "VITE_GA_MEASUREMENT_ID" + "%" && gaId !== "") {
@@ -113,8 +117,18 @@
             y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
           })(window, document, "clarity", "script", clarityId);
         }
+      }
+
+      const events = ['scroll', 'pointerdown', 'touchstart', 'keydown'];
+      events.forEach(function (e) {
+        window.addEventListener(e, initAnalytics, { once: true, passive: true });
       });
-    });
+
+      // Fallback timer if user doesn't interact immediately
+      window.addEventListener('load', function () {
+        setTimeout(initAnalytics, 5000);
+      });
+    })();
   </script>
 
   <!-- Bing Webmaster Tools -->
@@ -218,6 +232,9 @@
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
   <link rel="dns-prefetch" href="//api.fontshare.com">
+
+  <!-- Preload Critical LCP Hero Image -->
+  <link rel="preload" as="image" href="/profile.webp" type="image/webp" fetchpriority="high" />
 
   <!-- Fonts loaded asynchronously to prevent render-blocking -->
   <link rel="preload" as="style"

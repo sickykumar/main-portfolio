@@ -12,11 +12,17 @@ async function start(){
     });
 
     // Start background post scheduler
-    const { startScheduler } = await import('./utils/scheduler.js');
+    const { startScheduler, stopScheduler } = await import('./utils/scheduler.js');
     startScheduler();
+
+    // Start anti-cold-storage keep-alive self-pinger
+    const { startKeepAlive, stopKeepAlive } = await import('./utils/keepAlive.js');
+    startKeepAlive();
 
     const shutdown=()=>{
       console.log('Gracefully shutting down...');
+      stopScheduler();
+      stopKeepAlive();
       server.close(()=>process.exit(0));
     };
 
