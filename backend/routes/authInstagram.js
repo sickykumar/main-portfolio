@@ -22,9 +22,8 @@ router.get("/instagram/callback", async (req, res) => {
 
   try {
     const APP_ID = process.env.INSTAGRAM_APP_ID;
-    const APP_SECRET = process.env.INSTAGRAM_APP_SECRET;
-    const REDIRECT_URI =
-      "https://main-portfolio-24pg.onrender.com/auth/instagram/callback";
+    const serverBaseUrl = (process.env.SERVER_URL || "https://api-portfolio.sickykumar.in").replace(/\/$/, "");
+    const REDIRECT_URI = `${serverBaseUrl}/auth/instagram/callback`;
 
     // Exchange authorization code for short-lived token
     const { data: shortTokenData } = await axios.get(
